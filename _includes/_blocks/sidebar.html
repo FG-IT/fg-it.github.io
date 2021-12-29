@@ -11,6 +11,9 @@
 {% when 'archive' %}
   {% assign is_post = false %}
   {% capture sidebar %}{% include _macro/sidebar.html %}{% endcapture %}
+{% when 'author' %}
+  {% assign is_post = false %}
+  {% capture sidebar %}{% include _macro/author-sidebar.html %}{% endcapture %}
 {% when 'category' %}
   {% assign is_post = false %}
   {% capture sidebar %}{% include _macro/sidebar.html %}{% endcapture %}

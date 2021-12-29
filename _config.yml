@@ -52,13 +52,17 @@ kramdown:
 # Default Attributes
 ## Docs: https://jekyllrb.com/docs/configuration/#front-matter-defaults
 defaults:
-  -
-    scope:
+  - scope:
       path: ""
       type: "posts"
     values:
       layout: "post"
-      comments: true
+      comments: 
+  - scope:
+      path: ""
+      type: "authors"
+    values:
+      layout: "author"
 
 # Atom feed
 feed:
@@ -728,6 +732,9 @@ vendors:
   # https://github.com/ethantw/Han
   han:
 
+collections:
+  authors:
+    output: true
 
 # Assets
 css: assets/css

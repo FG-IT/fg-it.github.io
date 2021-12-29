@@ -1,0 +1,133 @@
+{% comment %} sidebar(is_post) {% endcomment %}
+
+<div class="sidebar-toggle">
+  <div class="sidebar-toggle-line-wrap">
+    <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+    <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+  </div>
+</div>
+
+<aside id="sidebar" class="sidebar">
+  <div class="sidebar-inner">
+
+    {% if is_post and site.toc.enable %}
+      {% assign display_toc = true %}
+      {% assign source = page.content %}
+      {% include _helper/toc.html %}
+    {% endif %}
+
+    {% if display_toc and toc.size > 1 %}
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+          {{ __.sidebar.toc }}
+        </li>
+        <li class="sidebar-nav-overview" data-target="site-overview">
+          {{ __.sidebar.overview }}
+        </li>
+      </ul>
+    {% endif %}
+    
+    {% assign author = site.authors | where: 'short_name', page.short_name | first %}
+    <section class="site-overview sidebar-panel{% unless display_toc and toc.size > 1 %} sidebar-panel-active{% endunless %}">
+      <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <img class="site-author-image" itemprop="image"
+              src="{% assign default_avatar = site.images | append: '/avatar.gif' %}{{ author.avatar | default: default_avatar | relative_url }}"
+              alt="{{ site.author }}" />
+        <p class="site-author-name" itemprop="name">{{ author.name || page.short_name }}</p>
+        {% if author.description %} 
+          <p class="site-description motion-element" itemprop="description">{{ author.description }}</p>
+        {% endif %}
+      </div>
+      <nav class="site-state motion-element">
+
+        {% if site.archive_dir != '/' %}
+        {% assign author_posts = site.posts | where: 'author', page.short_name %}
+          <div class="site-state-item site-state-posts">
+            <a href="{{ author.url }}">
+              <span class="site-state-item-count">{{ author_posts.size }}</span>
+              <span class="site-state-item-name">{{ __.state.posts }}</span>
+            </a>
+          </div>
+        {% endif %}
+      </nav>
+
+      <div class="links-of-author motion-element">
+        <span class="links-of-author-item">
+          {% if author && author.github %}
+            <a href="{{ author.github }}" target="_blank" title="github">
+              <i class="fa fa-fw fa-github"></i>
+              github
+            </a>
+          {% endif %}
+        </span>
+      </div>
+
+      {% assign cc = 'by, by-nc, by-nc-nd, by-nc-sa, by-nd, by-sa, zero' | split: ', ' %}
+      {% if cc contains site.creative_commons %}
+        <div class="cc-license motion-element" itemprop="license">
+          <a href="https://creativecommons.org/{% if site.creative_commons == 'zero' %}publicdomain/zero/1.0{% else %}licenses/{{ site.creative_commons }}/4.0{% endif %}/" class="cc-opacity" target="_blank">
+            <img src="{{ site.images | relative_url }}/cc-{{ site.creative_commons }}.svg" alt="Creative Commons" />
+          </a>
+        </div>
+      {% endif %}
+
+      {% comment %} Blogroll {% endcomment %}
+      {% if site.links %}
+        <div class="links-of-blogroll motion-element {{ 'links-of-blogroll-' | append: site.links_layout | default: 'inline' }}">
+          <div class="links-of-blogroll-title">
+            <i class="fa  fa-fw fa-{{ site.links_icon | default: 'globe' | downcase }}"></i>
+            {{ site.links_title }}
+          </div>
+          <ul class="links-of-blogroll-list">
+            {% for name_link in site.links %}
+              {% assign name = name_link[0] %}
+              {% assign link = name_link[1] %}
+              <li class="links-of-blogroll-item">
+                <a href="{{ link }}" title="{{ name }}" target="_blank">{{ name }}</a>
+              </li>
+            {% endfor %}
+          </ul>
+        </div>
+      {% endif %}
+
+      {% include _custom/sidebar.html %}
+
+    </section>
+
+    {% if display_toc and toc.size > 1 %}
+    <!--noindex-->
+      <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+        <div class="post-toc">
+
+          {% if page.toc_number == nil %}
+            {% assign list_number = site.toc.number %}
+          {% else %}
+            {% assign list_number = page.toc_number %}
+          {% endif %}
+          {% assign class = 'nav' %}
+          {% assign source = page.content %}
+          {% include _helper/toc.html %}
+
+          {% if toc.size <= 1 %}
+            <p class="post-toc-empty">{{ __.post.toc_empty }}</p>
+          {% else %}
+            <div class="post-toc-content">{{ toc }}</div>
+          {% endif %}
+
+        </div>
+      </section>
+    <!--/noindex-->
+    {% endif %}
+
+    {% if site.sidebar.b2t %}
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        {% if site.sidebar.scrollpercent %}
+          <span id="scrollpercent"><span>0</span>%</span>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+</aside>

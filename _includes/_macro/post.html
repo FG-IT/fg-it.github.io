@@ -120,7 +120,16 @@
                 <i class="fa fa-user-o"></i>
               </span>
               <span class="post-meta-item-text">{{ __.post.by }}</span>
+              {% assign author = site.authors | where: 'short_name', page.author | first %}
+              {% if author %}
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="{{ author.url }}" itemprop="url" rel="index">
+                    <span itemprop="name">{{ post.author }}</span>
+                  </a>
+                </span>
+              {% else %}
               <span class="post-meta-item-text">{{ post.author }}</span>
+              {% endif %}
             </span>
           {% endif %}
           {% if post.comments %}

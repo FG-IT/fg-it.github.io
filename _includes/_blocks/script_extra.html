@@ -1,11 +1,18 @@
 {% case page.layout %}
 {% when 'post' %}
   {% capture script_extra %}{% include _scripts/pages/post-details.html %}{% endcapture %}
-{% when 'archive' %}
+{% when 'archive', 'author' %}
   {% capture script_extra %}
     {% if site.use_motion %}
       <script type="text/javascript" id="motion.page.archive">
         $('.archive-year').velocity('transition.slideLeftIn');
+      </script>
+    {% endif %}
+    {% if page.layout == 'author' %}
+      <script type="text/javascript">
+        $(document).ready(()=>{
+          NexT.utils.displaySidebar();
+        })
       </script>
     {% endif %}
     {% include _scripts/pages/pagination.html %}
@@ -21,3 +28,5 @@
 {% else %}
   {% capture script_extra %}{% include _scripts/pages/post-details.html %}{% endcapture %}
 {% endcase %}
+
+
