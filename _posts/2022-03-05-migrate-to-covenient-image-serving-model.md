@@ -28,6 +28,7 @@ Please note than in order to avoid the chance of cold start, we need leave some 
 ### Environment Variables
 In order to make the service run properly, you need to add google cloud storage related environment variables.
 #### Non-Google Cloud Environment
+
 |   ENV name      | value        | 
 |---------------  |--------------|
 |GCS_PROJECT_ID   |gc project id |
@@ -67,7 +68,7 @@ in [variation_service.rb](https://github.com/FG-IT/spree/blob/ev3.0.0/core%2Fapp
 2. `#{style_name}_image_url(format='jpg')`, such as `small_image_url`, `product_image_url`. Param `format` is either `jpg` or `webp`.
    
 I'd like to suggest you override image styles instead of renaming. Two reasons: 
-1. Keep all the naming consistent. All the extensions will solely depend on `spree` to retrive link of image url.
+1. Keep all the naming consistent. All the extensions will solely depend on `spree` to retrive links of images.
 2. make use of the methods pre-defined by `define_method`. If you add new style names, for example `list: [300, 300]`, the method `list_image_url` is not defined automatically.
 
 you can do it like the following:
