@@ -20,10 +20,10 @@ You may also need to tune the configurations of `cloud run`. The following is my
 * CPU: 500m, only allocated during request processing
 * Memory: 256MiB
 * Maximum request per container: 1
-* Execution: First Generation (faster code start)
+* Execution: First Generation (faster cold start)
 * Autoscaling: minimum instances: 2
 
-Please note than in order to avoid the chance of code start, we need leave some instances idle for fast response. idle instances charge full price for memory, but only 13% for cpu. If you just deploy the service, I suggest to set a large quantity of minimum instances for a few days. Because lots of image variants request will hit the service directly. 
+Please note than in order to avoid the chance of cold start, we need leave some instances idle for fast response. idle instances charge full price for memory, but only 13% for cpu. If you just deployed the service, I suggest to set a large quantity of minimum instances for a few days. Because lots of image variants requests will hit the service directly. 
 
 ### Environment Variables
 In order to make the service run properly, you need to add google cloud storage related environment variables.
