@@ -30,13 +30,14 @@ In order to make the service run properly, you need to add google cloud storage 
 #### Non-Google Cloud Environment
 |   ENV name      | value        | 
 |---------------  |--------------|
-|GCS_PROJECT_ID|  |gc project id |
+|GCS_PROJECT_ID   |gc project id |
 |GCS_CLIENT_EMAIL |refer service account|
 |GCS_PRIVATE_KEY  |refer service account|
 |GCS_BUCKET       |storage bucket name|
 
 #### Google Cloud Environment
 please make sure the bucket and the service you're going to deploy are under the same project.
+
 |   ENV name      | value        | 
 |---------------  |--------------|
 |GC_DEPLOY        | true         |
