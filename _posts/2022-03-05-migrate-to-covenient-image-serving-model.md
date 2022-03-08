@@ -17,13 +17,13 @@ tags:
 3. run `gcloud run deploy`, proceed by answering all the prompted questions. *note: when select deploy region, select one closer to your cloud storage location.*
 
 You may also need to tune the configurations of `cloud run`. The following is my suggestion, you may need a different config set. 
-* CPU: 500m, only allocated during request processing
+* CPU: 250m, only allocated during request processing
 * Memory: 256MiB
 * Maximum request per container: 1
 * Execution: First Generation (faster cold start)
 * Autoscaling: minimum instances: 2
 
-Please note than in order to avoid the chance of cold start, we need leave some instances idle for fast response. idle instances charge full price for memory, but only 13% for cpu. If you just deployed the service, I suggest to set a large quantity of minimum instances for a few days. Because lots of image variants requests will hit the service directly. 
+Please note than in order to avoid the chance of cold start, we need leave some instances idle for fast response. idle instances charge full price for memory, but only 13% for cpu. If you just deployed the service, I suggest to set a large quantity of minimum instances for a few days. Because lots of image variants requests will hit the service directly. You can always adjust the configurations according to the real usage by observing the metrics.
 
 ### Environment Variables
 In order to make the service run properly, you need to add google cloud storage related environment variables.
@@ -55,7 +55,8 @@ Basically, a field called `attached_file` is added to `spree_assets`. Every time
 
 ### Gem Upgrade
 update spree to tag `ev3.1.0`
-`gem 'spree', github: 'FG-IT/spree', tag: 'ev3.0.0'`
+
+`gem 'spree', github: 'FG-IT/spree', tag: 'ev3.1.0'`
 
 you'll also need to copy & run migrations.
 
