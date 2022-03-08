@@ -54,7 +54,7 @@ You may find it useful to [add some custom headers to the response of the backen
 Basically, a field called `attached_file` is added to `spree_assets`. Every time when a `Spree::Image` is created, its `attachment_blob.key` will be saved to `attached_file`. This key is also the file name in storage. So, we use the key to generate a url which can be used directly find the original file. Then, use our own image processing service to serve images with different sizes and formats. 
 
 ### Gem Upgrade
-update spree to tag `ev3.0.0`
+update spree to tag `ev3.1.0`
 `gem 'spree', github: 'FG-IT/spree', tag: 'ev3.0.0'`
 
 you'll also need to copy & run migrations.
