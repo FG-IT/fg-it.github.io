@@ -45,7 +45,18 @@ please make sure the bucket and the service you're going to deploy are under the
 |GCS_BUCKET       |storage bucket name|
 
 ## Setup Cloud CDN
-Follow the [instruction](https://cloud.google.com/cdn/docs/setting-up-cdn-with-serverless) to set up a cdn with the cloud run service we just deployed as the backend.
+Follow the [instruction](https://cloud.google.com/cdn/docs/setting-up-cdn-with-serverless) to set up a cdn with the cloud run service we just deployed as the backend. Important backends configuration options are listed below, not properly config these options will reduce cache performance.
+
+|  params             |  value              |
+|---------------------|  ------             |
+|Cache mode           | Cache static content|
+|Client time to live  | 1 year              |
+|Default time to live | 1 year              |
+|Maximum time to live | 1 year              |
+
+You can read more about `TTL` [here](https://cloud.google.com/cdn/docs/using-ttl-overrides)
+
+*note: if you want to edit the cache related setting, please follow [this guide](https://cloud.google.com/cdn/docs/using-cache-modes). Basically, you have to edit it through Load Balancing, NOT Cloud CDN*
 
 You may find it useful to [add some custom headers to the response of the backend service](https://cloud.google.com/load-balancing/docs/https/custom-headers), such as `cdn_cache_id`, `cdn_cache_status`. 
 
