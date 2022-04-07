@@ -13,7 +13,7 @@ tags:
 
 As more and more browsers turn off third-party cookies by default, it's harder and harder for third-party to track activities. Recently, I received a request to integrate [CJ affliate](https://www.cj.com/) to our e-commerce website. They requested to implement reverse proxy to turn the third-party cookies to first-party cookie. It seems there is no good way to do it using GKE's ingress controller since our e-commerce website is deployed in google cloud as a kubernetes cluster. After a few googling researches, I decided to install and use [nginx ingress controller](https://kubernetes.github.io/ingress-nginx/).
 
-This post is somewhat written for a speciallized scenario. For a general guidance, please refer [DigitalOcean's tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes#step-4-installing-and-configuring-cert-manager). 
+This post is written to achive a few special goals. For a general guidance, please refer [DigitalOcean's tutorial](https://www.digitalocean.com/community/tutorials/how-to-set-up-an-nginx-ingress-with-cert-manager-on-digitalocean-kubernetes#step-4-installing-and-configuring-cert-manager). 
 
 # Conventions
 1. `fancyshop.com` is your website domain, and `www.fancyshop.com` is set to redirect to `fancyshop.com`
