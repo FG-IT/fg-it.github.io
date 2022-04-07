@@ -1,6 +1,6 @@
 ---
 title: Install Nginx Ingress Controller & Cert Manager on GKE
-date: 2022-03-24 14:49:00
+date: 2022-04-07 10:49:00
 author: YZ
 categories:
 - kubenetes
