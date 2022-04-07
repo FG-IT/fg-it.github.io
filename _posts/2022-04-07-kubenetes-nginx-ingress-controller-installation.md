@@ -29,7 +29,7 @@ for me, I chose to apply a YAML manifest.
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.1.2/deploy/static/provider/cloud/deploy.yaml
 ```
 
-After sucessful apply the manifest, you should find a srevice called `	ingress-nginx-controller` in `Kubernetes Engine -> Service & Ingress` Service tab. The type is `External load balancer`, and there is an ip attached it, we name is `ingress-nginx-controller-ip`. 
+After sucessful apply the manifest, you should find a srevice called `ingress-nginx-controller` in `Kubernetes Engine -> Service & Ingress` Service tab. The type is `External load balancer`, and there is an ip attached it, we name is `ingress-nginx-controller-ip`. 
 
 # DNS
 Please also reserve `ingress-nginx-controller-ip` ip address, and make changes to your dns configuration to point `fancyshop.com` to `ingress-nginx-controller-ip`
