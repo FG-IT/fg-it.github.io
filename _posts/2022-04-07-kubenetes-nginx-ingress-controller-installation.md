@@ -143,7 +143,7 @@ metadata:
   annotations:
     cert-manager.io/cluster-issuer: "letsencrypt-prod" # using letsencrypt-prod to issue certificates.
     kubernetes.io/ingress.class: nginx 
-     nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
+    nginx.ingress.kubernetes.io/from-to-www-redirect: "true"
     nginx.ingress.kubernetes.io/server-snippet: |
       server_name fancyshop.com;
       location /proxydirectory/ {  
