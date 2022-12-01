@@ -38,6 +38,12 @@ One thing to mention is that every time the query to create the view changes, a 
 # Result
 The amount of queries to fetch product related information reduced to exact 1. Through google cloud query insights, the avg execution time is about 4.5ms. There are 412,847 products in the database. 
 
+## Database configuration
+* vCPUs: 2
+* Memory: 8G
+* MySQL: 8.0.26
+
+Database and Kubernetes Cluster are in the same zone.
 # Potential Problem
 Not sure if it still works good if there are more products records in the database. In the worst case, if it takes linear longer time as the products increase, I think it's still a good solution. If when products amount exceed a threshold, it takes significant longer, maybe this solution is not feasible.
 
