@@ -1,6 +1,6 @@
 ---
 title: How I Optimize Mysql Queries on Spree Product Detail Page
-date: 2022-11-30 18:06:00
+date: 2022-11-30 18:36:00
 author: YZ
 categories:
 - spree
@@ -13,10 +13,10 @@ tags:
 ---
 
 # The Problem
-Spree product detail page runs lots(a few dozen even more than one hundred depends on product's properties) of database queries. Lots of tables are invloved(Appendix). Each query is excuted quite fast in database engine, but travels through network takes lots of time. Let's assume there are 80 queries, it takes 1ms for each query travel through the fast google cloud's inner network. Even if we omit the time mysql takes to excute those queries, it would take 80ms for data fetching. 
+Spree product detail page runs lots(a few dozen even more than one hundred depends on product's properties) of database queries. Lots of tables are invloved(Appendix). Each query is excuted quite fast in database engine, the network takes lots of time. Let's assume there are 80 queries, it takes 1ms on the fast google cloud's inner network. Even if we omit the time mysql takes to excute those queries, it would take 80ms for data fetching. 
 
 # The Bottleneck
-The internet is fast. The database is also fast. However, too much queries taking too much time travele on the network.
+The internet is fast. The database is also fast. However, too much queries taking too much time on the network.
 
 # Proposal
 Of course, we need to reduce the queries. Can we fetch the same data with significantly less(1 is optimal) queries? After researching the posible solutions of mysql(we already use mysql), the following proposal seems work.
@@ -36,12 +36,12 @@ Here, I just use a virtual view instead of a materialized view. A materialized v
 One thing to mention is that every time the query to create the view changes, a new database migration should be generated and ran to update the view in mysql.
 
 # Result
-The query to fetch product related information reduced to exactly 1. Through google cloud query insights, the avg execution time is about 4.5ms. There are 412,847 products. 
+The amount of queries to fetch product related information reduced to exact 1. Through google cloud query insights, the avg execution time is about 4.5ms. There are 412,847 products in the database. 
 
 # Potential Problem
-Not sure if it still works good if there are more products records in the database. If it takes linear longer time as the products increase, it will be good enough. If when products amount exceed a threshold, it takes significant longer, maybe this solution is not feasible.
+Not sure if it still works good if there are more products records in the database. In the worst case, if it takes linear longer time as the products increase, I think it's still a good solution. If when products amount exceed a threshold, it takes significant longer, maybe this solution is not feasible.
 
-Because the way to fetch data is changed, lots of other works may be done to make product page show the information.
+Because the way to fetch data is changed, thus the data structure is changed. So, lots of other works should be done to make product page show the information.
 
 # Appendix
 ## tables involved in product detail page
