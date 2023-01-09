@@ -737,6 +737,8 @@ vendors:
 collections:
   authors:
     output: true
+  resources:
+    output: true
 
 # Assets
 css: assets/css
