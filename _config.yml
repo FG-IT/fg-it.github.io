@@ -126,6 +126,7 @@ menu:
   #about: /about/
   archives: /archives/
   tags: /tags/
+  resources: /resources/
   #sitemap: /sitemap.xml
   #commonweal: /404.html
 
@@ -146,6 +147,7 @@ menu_icons:
   archives: archive
   sitemap: sitemap
   commonweal: heartbeat
+  resources: book
 
 
 
