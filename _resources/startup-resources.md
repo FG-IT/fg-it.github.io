@@ -25,7 +25,7 @@ updated_at: 2022-01-09
 
 
 ## Books
-* [The Innovator's Dilemma by Clayton M. Christensen](https://www.amazon.com/Innovators-Dilemma-Revolutionary-Change-Business/dp/0062060244)
+* [The Innovator's Dilemma by Clayton M. Christensen](https://www.amazon.com/dp/1633691780)
 
 ## Other Websites
 * [Agile Startup by Matt Sand](https://www.agilestartup.com/)
