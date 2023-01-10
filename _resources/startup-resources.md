@@ -22,3 +22,7 @@ updated_at: 2022-01-09
   
 ## Startup Founder Interviews
 * [Haroon Mokhtarzada, Truebill](https://mixergy.com/interviews/truebill-with-haroon-mokhtarzada/)
+
+
+## Other Websites
+* [Agile Startup by Matt Sand](https://www.agilestartup.com/)
