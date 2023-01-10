@@ -24,5 +24,8 @@ updated_at: 2022-01-09
 * [Haroon Mokhtarzada, Truebill](https://mixergy.com/interviews/truebill-with-haroon-mokhtarzada/)
 
 
+## Books
+* [The Innovator's Dilemma by Clayton M. Christensen](https://www.amazon.com/Innovators-Dilemma-Revolutionary-Change-Business/dp/0062060244)
+
 ## Other Websites
 * [Agile Startup by Matt Sand](https://www.agilestartup.com/)
